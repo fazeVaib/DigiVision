@@ -410,8 +410,8 @@ def sparse_cross_entropy(y_true, y_pred):
 
     return loss_mean
 
-
-coco.set_data_dir("/mnt/MyDrive/Datasets/image-cap/data/coco")
+# ENTER YOUR CUSTOM PATH WHERE COCO DATASET IS STORED
+coco.set_data_dir("/mnt/MyDrive/Datasets/image-cap/data/coco") 
 
 _, filenames_train, captions_train = coco.load_records(train=True)
 
