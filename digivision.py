@@ -7,13 +7,12 @@ from caption_tune import modcap, face_found_cap, face_not_found_cap
 from gensound import generate_sound
 import tkinter as tk
 
-
 def saveface():
     x1 = entry1.get()
     print(x1 + ' face saved')
     root.destroy()
     cv.imwrite(r"images//" +
-               str(x1) + ".jpg", frame)
+               str(x1) + ".jpg", save)
     data = {x1: f_part.img_to_encoding(
         "images//" + str(x1) + ".jpg").tolist()}
     f_part.digi_db.insert_one(data)
@@ -46,6 +45,10 @@ while True:
             gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
             faces = facedetect.detectMultiScale(gray, 1.3, 5)
             cv.imwrite('./test.jpg', frame)
+            known_detected = 0
+            unknown_detected = 0
+            known_face_list = []
+            known_face_dist = []
             try:
                 for x, y, w, h in faces:
                     #cv2.imwrite("dset//User."+str(user)+"."+str(sample)+".jpg",gray[y:y+h,x:x+w])
@@ -53,9 +56,19 @@ while True:
                     cv.imwrite('./test.jpg', save)
                     dis, name = f_part.who_is_it('./test.jpg')
                     print(str(dis)+","+name)
-                    temp = face_found_cap(name)
-                    generate_sound(temp)
-                    if(name == 'unknown'):
+                    if name != 'unknown':
+                        known_face_list[known_detected] = name
+                        known_face_dist[known_detected] = dis
+                        known_detected += 1
+        
+                    else:
+                        unknown_detected += 1
+                        
+                    if known_detected>0:
+                        for i in range(known_detected):
+                            temp = face_found_cap(known_face_list[i])
+                            generate_sound(temp)
+                    elif unknown_detected == 1:
                         temp = face_not_found_cap()
                         generate_sound(temp)
 
@@ -77,6 +90,9 @@ while True:
                         canvas1.create_window(180, 150, window=button2)
 
                         root.mainloop()
+
+                    else:
+                        generate_sound("Too many unknown people!")
             except:
                 print("No recognizable face detected")
                 generate_sound("No recognizable face detected")
