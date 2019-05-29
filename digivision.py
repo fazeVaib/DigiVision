@@ -24,7 +24,7 @@ def ignoreface():
     root.destroy()
 
 
-cap = cv.VideoCapture('Sample Videos/lol4.mp4')
+cap = cv.VideoCapture('Sample Videos/test.mp4')
 
 while True:
     ret, frame = cap.read()
@@ -33,7 +33,7 @@ while True:
         # font = cv.FONT_HERSHEY_SIMPLEX
         cv.imshow("Video", frame)
 
-        if cv.waitKey(10) == ord('p'):
+        if cv.waitKey(5) == ord('p'):
 
             cv.imwrite('./test.jpg', frame)
             final_caption = p_part.generate_caption(
@@ -42,7 +42,7 @@ while True:
             print(final_caption)
             generate_sound(final_caption)  # convert to audio
 
-        if cv.waitKey(10) == ord('f'):
+        if cv.waitKey(5) == ord('f'):
             gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
             faces = facedetect.detectMultiScale(gray, 1.3, 5)
             cv.imwrite('./test.jpg', frame)
@@ -81,7 +81,7 @@ while True:
                 print("No recognizable face detected")
                 generate_sound("No recognizable face detected")
 
-        if cv.waitKey(35) & 0xFF == 27:  # ASCII for Esc Key
+        if cv.waitKey(5) & 0xFF == 27:  # ASCII for Esc Key
             break
     else:
         break
