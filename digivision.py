@@ -57,17 +57,20 @@ while True:
                     dis, name = f_part.who_is_it('./test.jpg')
                     print(str(dis)+","+name)
                     if name != 'unknown':
-                        known_face_list[known_detected] = name
-                        known_face_dist[known_detected] = dis
+                        known_face_list.append(name)
+                        known_face_dist.append(dis)
                         known_detected += 1
-        
+
                     else:
                         unknown_detected += 1
-                        
-                if known_detected>0:
+
+                if known_detected > 0:
+                    print("known: " + str(known_detected))
                     for i in range(known_detected):
-                        print(known_face_list[i] + " at dist of: " + str(known_face_dist[i]))
-                        temp = face_found_cap(known_face_list[i])
+                        print('i=' + str(i))
+                        print(
+                            known_face_list[i] + " at dist of: " + str(known_face_dist[i]))
+                        temp = face_found_cap(str(known_face_list[i]))
                         generate_sound(temp)
                 elif unknown_detected == 1:
                     temp = face_not_found_cap()
@@ -92,13 +95,17 @@ while True:
 
                     root.mainloop()
 
-                else:
-                    generate_sound("Too many unknown people!")
-            except:
-                print("No recognizable face detected")
-                generate_sound("No recognizable face detected")
+                elif known_detected == 0 and unknown_detected == 0:
+                    print("No person found")
+                    generate_sound("No person found!")
 
-        if cv.waitKey(5) & 0xFF == 27:  # ASCII for Esc Key
+                else:
+                    print("Too many people")
+                    generate_sound("Too many people.")
+            except:
+                generate_sound("No recognisable face found!")
+
+        if cv.waitKey(1) & 0xFF == 27:  # ASCII for Esc Key
             break
     else:
         break
