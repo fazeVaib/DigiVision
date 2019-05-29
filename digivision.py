@@ -64,35 +64,36 @@ while True:
                     else:
                         unknown_detected += 1
                         
-                    if known_detected>0:
-                        for i in range(known_detected):
-                            temp = face_found_cap(known_face_list[i])
-                            generate_sound(temp)
-                    elif unknown_detected == 1:
-                        temp = face_not_found_cap()
+                if known_detected>0:
+                    for i in range(known_detected):
+                        print(known_face_list[i] + " at dist of: " + str(known_face_dist[i]))
+                        temp = face_found_cap(known_face_list[i])
                         generate_sound(temp)
+                elif unknown_detected == 1:
+                    temp = face_not_found_cap()
+                    generate_sound(temp)
 
-                        root = tk.Tk()
+                    root = tk.Tk()
 
-                        large_font = ('Times New Roman', 14)
+                    large_font = ('Times New Roman', 14)
 
-                        canvas1 = tk.Canvas(root, width=300, height=200)
-                        canvas1.pack()
-                        label = tk.Label(root, text='Enter the Name')
-                        canvas1.create_window(140, 50, window=label)
-                        entry1Var = tk.StringVar(value='')
-                        entry1 = tk.Entry(
-                            root, textvariable=entry1Var, font=large_font)
-                        canvas1.create_window(150, 90, window=entry1)
-                        button1 = tk.Button(text='SAVE', command=saveface)
-                        button2 = tk.Button(text='IGNORE', command=ignoreface)
-                        canvas1.create_window(100, 150, window=button1)
-                        canvas1.create_window(180, 150, window=button2)
+                    canvas1 = tk.Canvas(root, width=300, height=200)
+                    canvas1.pack()
+                    label = tk.Label(root, text='Enter the Name')
+                    canvas1.create_window(140, 50, window=label)
+                    entry1Var = tk.StringVar(value='')
+                    entry1 = tk.Entry(
+                        root, textvariable=entry1Var, font=large_font)
+                    canvas1.create_window(150, 90, window=entry1)
+                    button1 = tk.Button(text='SAVE', command=saveface)
+                    button2 = tk.Button(text='IGNORE', command=ignoreface)
+                    canvas1.create_window(100, 150, window=button1)
+                    canvas1.create_window(180, 150, window=button2)
 
-                        root.mainloop()
+                    root.mainloop()
 
-                    else:
-                        generate_sound("Too many unknown people!")
+                else:
+                    generate_sound("Too many unknown people!")
             except:
                 print("No recognizable face detected")
                 generate_sound("No recognizable face detected")
