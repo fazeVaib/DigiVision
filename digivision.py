@@ -100,8 +100,8 @@ while True:
                     generate_sound("No person found!")
 
                 else:
-                    print("Too many people")
-                    generate_sound("Too many people.")
+                    print("Too many unknown people")
+                    generate_sound("Too many unknown people.")
             except:
                 generate_sound("No recognisable face found!")
 
