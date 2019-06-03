@@ -4,7 +4,7 @@ warnings.filterwarnings("ignore")
 import p_part
 import f_part
 from caption_tune import modcap, face_found_cap, face_not_found_cap
-from gensound import generate_sound
+from gensoundgtts import generate_sound
 import tkinter as tk
 
 def saveface():
