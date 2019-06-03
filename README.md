@@ -7,6 +7,8 @@ A deep learning based application which is entitled to help the visually impaire
 * OpenCV
 * Python 3.5+
 * gTTS
+* pygame
+* pymongo
 
 # Dataset used
 MS COCO
