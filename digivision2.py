@@ -11,7 +11,7 @@ from faceadd import addn,speech
 
 def saveface():
  #   generate_sound("Tell me the name")
-    x1 = speech("Tell me the name")
+    x1 = speech("What is this human called?")
     print(x1 + ' face saved')
     cv.imwrite(r"images//" +
                str(x1) + ".jpg", save)

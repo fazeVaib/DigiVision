@@ -20,7 +20,7 @@ digi_db = db.trusted_people
 
 
 
-verification_threshhold = 1.188
+verification_threshhold = 0.600
 image_size = 160
 v = ftk.Verification()
 # Pre-load model for Verification
