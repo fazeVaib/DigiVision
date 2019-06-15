@@ -12,3 +12,7 @@ A deep learning based application which is entitled to help the visually impaire
 
 # Dataset used
 MS COCO
+
+# Process to run
+
+to be continued
