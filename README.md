@@ -11,7 +11,7 @@ A deep learning based application which is entitled to help the visually impaire
 * pymongo
 
 # Dataset used
-MS COCO
+MS COCO 2017
 
 # Process to run
 
