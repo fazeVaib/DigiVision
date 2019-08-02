@@ -48,6 +48,4 @@ Dataset for face Recognition is manually collected.
  - Don't need to re-train data on every single run. Once trained, weights gets loaded automatically.
  
  # Demo
-<video width="320" height="240" controls>
-  <source src="d2.mp4" type="video/mp4">
-</video>
+ [Click here for demo for MAIN_RUN.py](d2.mp4)
