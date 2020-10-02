@@ -25,3 +25,7 @@ def modcap(text):
         return "a person standing just in front."
     else:
         return text
+    
+
+def testingFunc():
+    pass
